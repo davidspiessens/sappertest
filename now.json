@@ -1,0 +1,11 @@
+{
+    "version": 1,
+    "name": "sapper.davidspiessens.be",
+    "alias": "sapper.davidspiessens.be",
+    "scale": {
+        "bru1": {
+          "min": 1,
+          "max": "auto"
+        }
+    }
+}
