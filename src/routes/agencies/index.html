@@ -1,0 +1,22 @@
+<h1>Agencies</h1>
+
+<ul>
+{#each agencies as agency}
+	<li><a href="/agencies/{agency.attributes.nid}">{agency.attributes.title}</a></li>
+{/each}
+</ul>
+
+<script>
+export default {
+    async preload() {
+        const res = await this.fetch('https://api.synergiejobs.be/jsonapi/node/agency');
+        const data = await res.json();
+        if (res.status === 200) {
+            return {
+                agencies: data.data,
+            };
+        }
+        return this.error(res.status, data.message);
+    }
+}
+</script>

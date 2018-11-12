@@ -5,33 +5,12 @@
 <h1>David Spiessens</h1>
 <p>web developer</p>
 
-<ul>
-{#each agencies as agency}
-	<li>{agency.attributes.title}</li>
-{/each}
-</ul>
-
 <figure>
 	<img alt='Borat' src='great-success.png'>
 	<figcaption>Ow!</figcaption>
 </figure>
 
 <p><strong>Try editing this file (routes/index.html) to test hot module reloading.</strong></p>
-
-<script>
-export default {
-	async preload() {
-		const res = await this.fetch('https://api.synergiejobs.be/jsonapi/node/agency');
-		const data = await res.json();
-		if (res.status === 200) {
-			return {
-				agencies: data.data,
-			};
-		}
-		this.error(res.status, data.message);
-	}
-}
-</script>
 
 <style>
 	h1, figure, p {

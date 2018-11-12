@@ -1,0 +1,22 @@
+<h1>{agency.attributes.title}</h1>
+
+<script>
+    export default {
+        async preload({params, query}) {
+            const res = await this.fetch('https://api.synergiejobs.be/jsonapi/node/agency?filter[nid]=' + params.slug);
+            const data = await res.json();
+
+            if (res.status === 200) {
+                if (data.data && data.data[0]) {
+                    return {
+                        agency: data.data[0],
+                    };
+                } else {
+                    return this.error(404, 'agency not found')
+                }
+            }
+
+            return this.error(res.status, data.message);
+       }
+    }
+</script>
